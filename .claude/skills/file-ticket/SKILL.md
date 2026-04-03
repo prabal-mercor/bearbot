@@ -1,7 +1,7 @@
 # Skill: File a Linear Ticket from Slack
 
 ## Trigger
-User says "@bearbot file this", "@bearbot ticket", or similar
+User says "@bearbot file this", "bearbot ticket", or similar
 in a Slack thread or channel.
 
 ## Steps
@@ -44,3 +44,9 @@ in a Slack thread or channel.
   Priority: [level] · Assignee: [assignee or "Unassigned - pending triage"]
   [linear URL]
   ```
+
+### Step 7: Update Memory
+- Read MEMORIES.md and append anything new you learned:
+  user preferences, project context, assignment patterns, request nuances
+- Keep entries short and factual
+- Don't repeat what's already there
