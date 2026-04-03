@@ -6,65 +6,48 @@ alwaysApply: true
 
 # Ticket Writing Conventions
 
-Based on the AAIE Bear Eng<>Ops Team Guide to Ticket Creation.
-
 ## Title Format
 `[Tool Type] [Project Name] - Ask summary`
 
-Examples:
-- "AT Tooling - [Project Odysseus] Modify Autoreviewer to check spelling"
-- "RLS - [Project Mercury] Fix broken writer assignment flow"
+Example: "AT Tooling - [Project Odysseus] Modify Autoreviewer to check spelling"
 
-## Required Fields
-
-Every ticket description MUST include:
+## Description Template
 
 ```
 ## Summary
 1-2 sentences. What is needed and why it matters.
 
-## Tool Links
-Direct links to the relevant tool (Airtable/Hex/RLS), if applicable.
-
-## Context
-Clear explanation of the situation or problem. Include all relevant
-details from the Slack thread so no context is missed.
+## Full Context
+Capture the ENTIRE Slack thread conversation verbatim or near-verbatim.
+This is the most important part — no context should be lost.
+Include who said what, tool links, screenshots referenced, etc.
 
 ## What is Being Blocked?
-The specific step or process that is currently stopped or hindered.
-This drives prioritization.
+What step or process is stopped/hindered. If nothing is blocked,
+say "Not a blocker — improvement request."
 
-## Solution Spec
-The ideal end state. Can be simple for small fixes, or reference a
-doc with screenshots for larger asks. If ambiguous, note that scoping
-help is needed.
+## Solution Spec (if provided)
+The ideal end state as described by the reporter. If not provided
+or ambiguous, note "Needs scoping."
 
-## Timeline
-The estimated date/time when the blocked step needs to proceed and why.
-
-## Engineer with Context
-If there is a specific engineer who has context, mention them.
-If the reporter does not specify, ASK who should be assigned before
-creating the ticket.
+## Timeline (if provided)
+When this needs to be done and why.
 ```
 
 ## Priority Guide
 
-| Priority | Level | Criteria |
-|----------|-------|----------|
-| Urgent (P0) | 1 | Experience-breaking, can't do tasks; customer asked ASAP; more important than almost all other tickets |
-| High (P1) | 2 | Blocking project start; blocking key improvement; tight 24hr SLA needed |
-| Medium (P2) | 3 | Important but nice-to-have; ~3 days delivery acceptable |
+| Priority | Level | When to use |
+|----------|-------|-------------|
+| Urgent (P0) | 1 | Experience-breaking; customer asked ASAP; can't do tasks right now |
+| High (P1) | 2 | Blocking project start or key improvement; tight 24hr SLA |
+| Medium (P2) | 3 | Important but not critical; ~3 days acceptable |
 | Low (P3) | 4 | Wishlist items |
 
-Default SLA is 24 hours. If <24hr SLA is needed, the ticket must
-explain why, and the reporter must DM Arunavha Chanda, Dylan Pourkay,
-or the current oncall AND Jordan Winawer.
+Default SLA is 24 hours. For <24hr SLA, the ticket must explain why
+and the reporter should DM Arunavha Chanda, Dylan Pourkay, or oncall
+AND Jordan Winawer.
 
-## After Creating a Ticket
-Reply in the Slack thread with:
-```
-Created [IDENTIFIER]: [Title]
-Priority: [level] · Assignee: [assignee or "Unassigned - pending triage"]
-[linear URL]
-```
+## Key Principle
+Filing the ticket is the priority. A ticket with full thread context
+but missing some fields is better than no ticket. Always capture the
+full conversation.

@@ -1,7 +1,7 @@
 # Skill: File a Linear Ticket from Slack
 
 ## Trigger
-User says "ticketBot file this", "ticketBot ticket", or similar
+User says "@bearbot file this", "@bearbot ticket", or similar
 in a Slack thread or channel.
 
 ## Steps
@@ -9,7 +9,8 @@ in a Slack thread or channel.
 ### Step 1: Gather Context
 - Read the target message and the full thread
 - Note the channel name, channel ID, and who posted
-- Get the Slack permalink for the message
+- Get the Slack permalink
+- Capture the ENTIRE conversation — this is the most important part
 
 ### Step 2: Check Assignment
 - If the reporter mentions a specific engineer, note them
@@ -20,16 +21,16 @@ in a Slack thread or channel.
 ### Step 3: Search for Duplicates
 - Use Linear MCP to search for existing issues matching key terms
 - If a clear duplicate exists:
-  - Reply: "This looks like a duplicate of [IDENTIFIER]: [title]
-    [link]. Should I still create a new ticket?"
+  - Reply with the link and ask if a new ticket is still needed
   - STOP and wait for response
-- If related issues exist, note them for the description
 
 ### Step 4: Draft the Ticket
-- Generate title: `[Tool Type] [Project Name] - Ask summary`
-- Generate full description using the template from ticket-conventions.mdc
-- Classify priority using the Priority Guide
+- Title: `[Tool Type] [Project Name] - Ask summary`
+- Fill description using the template from ticket-conventions.mdc
+- Include the full thread conversation in the "Full Context" section
+- Classify priority per the Priority Guide
 - Set assignee based on Step 2
+- Don't block on missing fields — file the ticket with what you have
 
 ### Step 5: Create in Linear
 - Use Linear MCP to create the issue with:
@@ -37,8 +38,9 @@ in a Slack thread or channel.
 - Capture the issue identifier and URL
 
 ### Step 6: Reply in Slack
-- Use Slack MCP to reply in the same thread with the confirmation
-  format from ticket-conventions.mdc
-
-### Step 7: Update Memory
-- If any new patterns were useful, note them in ticket-patterns.md
+- Reply in the same thread:
+  ```
+  Created [IDENTIFIER]: [Title]
+  Priority: [level] · Assignee: [assignee or "Unassigned - pending triage"]
+  [linear URL]
+  ```
