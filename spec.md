@@ -410,8 +410,3 @@ Same underlying infrastructure, different rules/skills/prompt.
 - Subscriber auto-add (Slack user → Linear user matching)
 - Ticket templates per team
 - Feedback loop: "Was this ticket accurate? 👍 👎" → memory update
-
-### V3
-- Linear webhook integration (status updates back to Slack)
-- Cross-reference with Airtable task data
-- Sprint/cycle-aware filing

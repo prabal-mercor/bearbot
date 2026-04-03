@@ -6,60 +6,65 @@ alwaysApply: true
 
 # Ticket Writing Conventions
 
-## Title Rules
-- 50-80 characters, concise, specific, action-oriented
-- Start with the WHAT, not the WHERE
-- BAD:  "Bug", "Issue in eval", "Slack request from John"
-- GOOD: "Model evaluations timing out on tasks with >50 turns"
-- GOOD: "Add bulk task reassignment for writer leave coverage"
+Based on the AAIE Bear Eng<>Ops Team Guide to Ticket Creation.
 
-## Description Template
+## Title Format
+`[Tool Type] [Project Name] - Ask summary`
 
-Every ticket description MUST follow this structure:
+Examples:
+- "AT Tooling - [Project Odysseus] Modify Autoreviewer to check spelling"
+- "RLS - [Project Mercury] Fix broken writer assignment flow"
+
+## Required Fields
+
+Every ticket description MUST include:
 
 ```
 ## Summary
-1-3 sentences. What is happening (or what is needed) and why it matters.
+1-2 sentences. What is needed and why it matters.
+
+## Tool Links
+Direct links to the relevant tool (Airtable/Hex/RLS), if applicable.
 
 ## Context
-- Reported by: @[name] in #[channel]
-- Slack thread: [permalink]
-- Date: [date]
-[Any additional context from the thread]
+Clear explanation of the situation or problem. Include all relevant
+details from the Slack thread so no context is missed.
 
-## Steps to Reproduce (bugs only)
-1. Step one
-2. Step two
-3. Observe [problem]
+## What is Being Blocked?
+The specific step or process that is currently stopped or hindered.
+This drives prioritization.
 
-## Expected vs Actual (bugs only)
-- **Expected:** [what should happen]
-- **Actual:** [what happens instead]
+## Solution Spec
+The ideal end state. Can be simple for small fixes, or reference a
+doc with screenshots for larger asks. If ambiguous, note that scoping
+help is needed.
 
-## Acceptance Criteria
-- [ ] Criterion 1
-- [ ] Criterion 2
-- [ ] Criterion 3
+## Timeline
+The estimated date/time when the blocked step needs to proceed and why.
 
-## Related
-- [Link to any duplicate/related Linear issues found]
+## Engineer with Context
+If there is a specific engineer who has context, mention them.
+If the reporter does not specify, ASK who should be assigned before
+creating the ticket.
 ```
 
-## Before Creating a Ticket
-1. ALWAYS search Linear first for potential duplicates
-   - Search by key terms from the message
-   - If a duplicate exists, reply with the link instead of creating a new ticket
-   - If a related (but not duplicate) issue exists, mention it in the ticket
-2. Read the full thread context, not just the triggering message
-3. If the message is ambiguous, ask a clarifying question in the thread
-   before filing
+## Priority Guide
+
+| Priority | Level | Criteria |
+|----------|-------|----------|
+| Urgent (P0) | 1 | Experience-breaking, can't do tasks; customer asked ASAP; more important than almost all other tickets |
+| High (P1) | 2 | Blocking project start; blocking key improvement; tight 24hr SLA needed |
+| Medium (P2) | 3 | Important but nice-to-have; ~3 days delivery acceptable |
+| Low (P3) | 4 | Wishlist items |
+
+Default SLA is 24 hours. If <24hr SLA is needed, the ticket must
+explain why, and the reporter must DM Arunavha Chanda, Dylan Pourkay,
+or the current oncall AND Jordan Winawer.
 
 ## After Creating a Ticket
 Reply in the Slack thread with:
 ```
 Created [IDENTIFIER]: [Title]
-Priority: [emoji] [level] · Team: [team] · Labels: [labels]
+Priority: [level] · Assignee: [assignee or "Unassigned - pending triage"]
 [linear URL]
 ```
-
-Priority emojis: Urgent, High, Medium, Low, None
