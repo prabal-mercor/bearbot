@@ -3,7 +3,7 @@
 Slack-triggered Cursor Cloud Agent that converts messages into structured Linear tickets for the Mercor AAIE team.
 
 ## How it works
-1. Someone posts in a channel and mentions `@bearbot`
+1. Someone posts in a channel and mentions `bearbot`
 2. Cursor Cloud Agent reads the thread, gathers context, checks for duplicates
 3. Creates a Linear ticket under "Bear & Plato AAIE Tooling" / Applied AI Engineering
 4. Replies in Slack with the ticket link
