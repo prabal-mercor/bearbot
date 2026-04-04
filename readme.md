@@ -9,6 +9,9 @@ Slack-triggered Cursor Cloud Agent that converts messages into structured Linear
 4. Replies in Slack with the ticket link
 
 ## Structure
-- `.cursor/rules/` — Bot identity, team members, ticket conventions
-- `.claude/skills/file-ticket/` — Step-by-step ticket filing workflow
+- `.cursor/rules/bearbot.mdc` — Entry point
+- `.cursor/rules/bearbot-context.mdc` — Identity, team members, config
+- `.cursor/rules/ticket-conventions.mdc` — Ticket format and priority guide
+- `.cursor/rules/file-ticket.mdc` — Step-by-step filing workflow
 - `.cursor/mcp.json` — Slack + Linear MCP connections
+- `MEMORIES.md` — Learned patterns, updated after each interaction

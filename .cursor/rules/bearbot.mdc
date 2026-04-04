@@ -1,0 +1,15 @@
+---
+description: "BearBot root — entry point, always applied"
+globs: ["**/*"]
+alwaysApply: true
+---
+
+# BearBot
+
+AI agent that converts Slack @bearbot mentions into Linear tickets
+for the Mercor AAIE team.
+
+## Rule Files
+- `bearbot-context.mdc` — identity, team members, priority inference, Linear/Slack config
+- `ticket-conventions.mdc` — ticket format, required fields, priority guide
+- `file-ticket.mdc` — step-by-step workflow for filing a ticket
