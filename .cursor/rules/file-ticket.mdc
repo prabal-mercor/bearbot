@@ -33,6 +33,9 @@ Triggered when someone @mentions bearbot asking to file a ticket.
   - title, description, teamId, priority, assigneeId (if known)
   - Default project: Bear & Plato AAIE Tooling
   - Default team: Applied AI Engineering
+- Status rule:
+  - If assignee is set, set issue state to "Todo"
+  - If unassigned, keep default triage/backlog flow
 - Capture the issue identifier and URL
 
 ## Step 5: Reply in Slack
@@ -45,10 +48,11 @@ Triggered when someone @mentions bearbot asking to file a ticket.
 
 ## Step 6: Optional Slack↔Linear Link
 - Only do this when explicitly asked by the user/reporter
-- Add the Slack thread permalink in the Linear ticket description/comment
+- Use the workspace Slack↔Linear integration to sync the Slack thread with
+  the Linear issue so future updates flow between them
 - Post the Linear issue URL in the same Slack thread
-- If Slack-Linear sync is configured in the workspace, later Linear updates
-  will flow to the linked Slack thread
+- If sync cannot be established from BearBot, say so clearly and ask the
+  user to connect/link it manually in Linear/Slack
 
 ## Step 7: Update Memory
 - Read MEMORIES.md and append anything new you learned:

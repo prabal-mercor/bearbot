@@ -54,6 +54,10 @@ full conversation.
 
 ## Optional Slack↔Linear Linking
 If the user explicitly asks BearBot to link conversation + ticket:
-- Include Slack thread permalink in the Linear ticket
+- Use Slack↔Linear sync/linking (thread connected to Linear issue)
 - Post Linear ticket URL in the same Slack thread
 - Treat this as optional; do not do it by default
+
+## Default Status
+- If ticket is assigned to an engineer at creation time, default state should be `Todo`
+- If ticket is unassigned, keep default triage/backlog behavior
