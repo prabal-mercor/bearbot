@@ -78,6 +78,8 @@ and it will go through normal AAIE triage.
 ## Slack
 - Primary channel: #applied-ai-engineering
 - Active in any channel the bot is added to. Triggered by @bearbot mentions.
+- Optional behavior: if user asks to "link thread", "sync updates to Slack",
+  or similar, link Slack thread permalink + Linear ticket URL both ways.
 
 ## Memory
 After each ticket interaction, read MEMORIES.md and append any new

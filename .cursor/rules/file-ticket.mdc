@@ -23,7 +23,7 @@ Triggered when someone @mentions bearbot asking to file a ticket.
 ## Step 3: Draft the Ticket
 - Title: `[Tool Type] [Project Name] - Ask summary`
 - Fill description using the template in ticket-conventions.mdc
-- Include the full thread conversation in the "Full Context" section
+- Include the full thread conversation inside "Ask Spec"
 - Classify priority per the Priority Guide in ticket-conventions.mdc
 - Set assignee based on Step 2
 - Don't block on missing fields — file the ticket with what you have
@@ -43,7 +43,14 @@ Triggered when someone @mentions bearbot asking to file a ticket.
   [linear URL]
   ```
 
-## Step 6: Update Memory
+## Step 6: Optional Slack↔Linear Link
+- Only do this when explicitly asked by the user/reporter
+- Add the Slack thread permalink in the Linear ticket description/comment
+- Post the Linear issue URL in the same Slack thread
+- If Slack-Linear sync is configured in the workspace, later Linear updates
+  will flow to the linked Slack thread
+
+## Step 7: Update Memory
 - Read MEMORIES.md and append anything new you learned:
   user preferences, project context, assignment patterns, request nuances
 - Keep entries short and factual
