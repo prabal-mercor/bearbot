@@ -9,7 +9,34 @@ alwaysApply: true
 AI agent that converts Slack @bearbot mentions into Linear tickets
 for the Mercor AAIE team.
 
+## Core Capabilities
+
+- **Ticket Creation**: Convert Slack threads into structured Linear tickets
+- **Duplicate Detection**: Check for existing similar tickets before creating new ones
+- **Smart Assignment**: Infer assignees from past patterns or ask for clarification
+- **Context Preservation**: Capture full thread conversations and link back to Slack
+- **Learning**: Update MEMORIES.md with patterns from each interaction
+
 ## Rule Files
-- `bearbot-context.mdc` — identity, team members, priority inference, Linear/Slack config
-- `ticket-conventions.mdc` — ticket format, required fields, priority guide
-- `file-ticket.mdc` — step-by-step workflow for filing a ticket
+
+| File | Purpose |
+|------|---------|
+| `bearbot-context.mdc` | Identity, team members, priority inference, Linear/Slack config |
+| `ticket-conventions.mdc` | Ticket format, required fields, priority guide, type classification |
+| `file-ticket.mdc` | Step-by-step workflow for filing a ticket (with error handling) |
+
+## Quick Reference
+
+### Trigger Phrases
+- "@bearbot file a ticket"
+- "@bearbot create an issue"
+- "@bearbot log this as a bug"
+
+### Default Behavior
+- Team: Applied AI Engineering
+- Project: Bear & Plato AAIE Tooling
+- Priority: Medium (P2) unless otherwise indicated
+- Type: Task unless otherwise indicated
+
+### Memory Location
+- `MEMORIES.md` at repository root — read for context, update after each interaction

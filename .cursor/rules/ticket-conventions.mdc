@@ -9,17 +9,31 @@ alwaysApply: true
 ## Title Format
 `[Tool Type] [Project Name] - Ask summary`
 
-Example: "AT Tooling - [Project Odysseus] Modify Autoreviewer to check spelling"
+### Tool Type Prefixes
+| Prefix | When to use |
+|--------|-------------|
+| RLS | Row-level security related tickets |
+| HEX | HEX dashboard or reporting related |
+| Airtable | Airtable automation or data related |
+| AT Tooling | General automation tooling |
+| Miscellaneous | When no specific tool type applies |
 
-The 'Tool Type' basically refers to either 'RLS'/'HEX'/'Airtable' or 'Miscallaneous' if you can't decipher anything.
+### Examples
+- "RLS - [Project Alpha] Add role-based filtering to dashboard"
+- "HEX - [Analytics] Fix broken chart visualization"
+- "Airtable - [Project Odysseus] Automate weekly report sync"
+- "AT Tooling - [Project Odysseus] Modify Autoreviewer to check spelling"
+- "Miscellaneous - Investigate slow API response times"
 
-'Project Name' could be inferred from memory/slack conversation. 
-
-It is definitely possible that you would not be able to infer these two things in some cases. If not, then simply summarize the title format based on the context and skip the placeholders.
+### When Tool Type or Project is Unknown
+If you cannot infer the tool type or project name from context:
+- Skip the placeholder entirely
+- Use a clear, descriptive summary instead
+- Example: "Fix login timeout issue for mobile users"
 
 ## Description Template
 
-```
+```markdown
 ## Summary
 1-2 sentences. What is needed and why it matters.
 
@@ -28,29 +42,58 @@ The ideal ask/end state as described by the reporter. If not provided
 or ambiguous, note "Needs scoping."
 
 ## What is Being Blocked?
-What step or process is stopped/hindered to complete the ask. If nothing is blocked, reply appropriately.
+What step or process is stopped/hindered to complete the ask. If nothing is blocked, note "No immediate blockers."
 
 ## Timeline 
-When this needs to be done and why. If nothing is mentioned, reply appropriately.
+When this needs to be done and why. If nothing is mentioned, note "No specific deadline mentioned."
+
+## Slack Context
+[Link to original Slack thread](permalink)
+Reporter: @username
+Channel: #channel-name
 ```
 
 ## Priority Guide
 
-| Priority | Level | When to use |
-|----------|-------|-------------|
-| Urgent (P0) | 1 | Experience-breaking; customer asked ASAP; can't do tasks right now |
-| High (P1) | 2 | Blocking project start or key improvement; tight 24hr SLA |
-| Medium (P2) | 3 | Important but not critical; ~3 days acceptable |
-| Low (P3) | 4 | Wishlist items |
+| Priority | Level | When to use | Response SLA |
+|----------|-------|-------------|--------------|
+| Urgent (P0) | 1 | Experience-breaking; customer asked ASAP; can't do tasks right now | < 4 hours |
+| High (P1) | 2 | Blocking project start or key improvement; tight 24hr SLA | < 24 hours |
+| Medium (P2) | 3 | Important but not critical; ~3 days acceptable | < 3 days |
+| Low (P3) | 4 | Wishlist items; nice-to-have improvements | Best effort |
 
 Default SLA is 24 hours. For <24hr SLA, the ticket must explain why
 and the reporter should DM Arunavha Chanda, Dylan Pourkay, or oncall
 AND Jordan Winawer.
 
-## Key Principle
-Filing the ticket is the priority. A ticket with full thread context
-but missing some fields is better than no ticket. Always capture the
-full conversation.
+### Priority Keywords Reference
+| Keywords in request | Suggested priority |
+|---------------------|-------------------|
+| "urgent", "P0", "blocking", "down", "production", "broken flow", "can't do tasks" | Urgent (1) |
+| "blocking project", "tight deadline", "need ASAP", "P1" | High (2) |
+| "nice-to-have", "important but not critical", "P2", "when possible" | Medium (3) |
+| "wishlist", "when you get a chance", "low pri", "P3", "eventually" | Low (4) |
+
+## Type Classification
+
+| Type | Keywords | When to use |
+|------|----------|-------------|
+| Bug | "timeout", "crash", "error", "broken", "bug", "regression", "failing", "not working" | Something that worked before is now broken |
+| Feature | "add", "support", "enable", "allow", "new", "feature", "request", "want", "need" | New functionality that doesn't exist |
+| Improvement | "improve", "optimize", "refactor", "clean up", "better", "faster", "enhance" | Making existing functionality better |
+| Task | "update", "change", "migrate", "move", "rename", "configure", "setup" | General work that isn't a bug/feature/improvement |
+
+**Default if unclear:** Task
+
+## Key Principles
+
+1. **Filing the ticket is the priority.** A ticket with full thread context but missing some fields is better than no ticket. Always capture the full conversation.
+
+2. **Context over perfection.** Include as much relevant information as possible, even if formatting isn't perfect.
+
+3. **Be explicit about unknowns.** If something is unclear, say so rather than guessing. Use "Needs scoping" or "Unknown" as appropriate.
+
+4. **Link back to Slack.** Always include the Slack permalink so anyone can find the original discussion.
 
 ## Optional Slack↔Linear Linking
 If the user explicitly asks BearBot to link conversation + ticket:
@@ -61,3 +104,10 @@ If the user explicitly asks BearBot to link conversation + ticket:
 ## Default Status
 - If ticket is assigned to an engineer at creation time, default state should be `Todo`
 - If ticket is unassigned, keep default triage/backlog behavior
+
+## Labels (Optional)
+If the request clearly fits one of these categories, add the appropriate label:
+- `needs-scoping` — Requirements are unclear
+- `blocked` — Waiting on external dependency
+- `quick-win` — Can be completed in < 1 hour
+- `customer-facing` — Affects external users

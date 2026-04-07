@@ -27,10 +27,11 @@ and it will go through normal AAIE triage.
 - Default if unclear → Medium (3)
 
 ## Type Classification
-- "timeout", "crash", "error", "broken", "bug", "regression", "failing" → Bug
-- "add", "support", "enable", "allow", "new", "feature", "request" → Feature
-- "improve", "optimize", "refactor", "clean up", "better" → Improvement
-- "update", "change", "migrate", "move", "rename" → Task
+- "timeout", "crash", "error", "broken", "bug", "regression", "failing", "not working" → Bug
+- "add", "support", "enable", "allow", "new", "feature", "request", "want", "need" → Feature
+- "improve", "optimize", "refactor", "clean up", "better", "faster", "enhance" → Improvement
+- "update", "change", "migrate", "move", "rename", "configure", "setup" → Task
+- Default if unclear → Task
 
 ## Team Members (Slack ID → Linear user for assignment matching)
 
