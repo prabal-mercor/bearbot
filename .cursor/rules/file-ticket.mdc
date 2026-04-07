@@ -14,23 +14,29 @@ Triggered when someone @mentions bearbot asking to file a ticket.
 - Get the Slack permalink
 - Capture the ENTIRE conversation — this is the most important part
 
-## Step 2: Check Assignment
-- If the reporter mentions a specific engineer, note them
-- If NOT mentioned, reply in the thread asking:
-  "Who should this be assigned to? (Or should I leave it for triage?)"
-- Wait for response before proceeding
+## Step 2: Check for Duplicates
+- Search Linear for issues with similar keywords from the request
+- If a matching active issue is found, post it in the thread and ask whether a new ticket is still needed
+- Only proceed to create a new ticket if the reporter confirms or no duplicate exists
 
-## Step 3: Draft the Ticket
+## Step 3: Check Assignment
+- If the reporter mentions a specific engineer, note them
+- If NOT mentioned, try to infer the best assignee from prior similar tickets or thread context
+- If no assignee can be inferred, reply in the thread: "Who should this be assigned to? (Or should I leave it for triage?)"
+- If they say "triage", don't respond within a reasonable window, or no one is clearly the right fit, create the ticket unassigned
+
+## Step 4: Draft the Ticket
 - Title: `[Tool Type] [Project Name] - Ask summary`
 - Fill description using the template in ticket-conventions.mdc
 - Include the full thread conversation inside "Ask Spec"
 - Classify priority per the Priority Guide in ticket-conventions.mdc
-- Set assignee based on Step 2
+- Set type label (Bug / Feature / Improvement / Task) based on keyword classification in bearbot-context.mdc
+- Set assignee based on Step 3
 - Don't block on missing fields — file the ticket with what you have
 
-## Step 4: Create in Linear
+## Step 5: Create in Linear
 - Use Linear MCP to create the issue with:
-  - title, description, teamId, priority, assigneeId (if known)
+  - title, description, team name ("Applied AI Engineering"), priority, assignee email or name (if known)
   - Default project: Bear & Plato AAIE Tooling
   - Default team: Applied AI Engineering
 - Status rule:
@@ -38,7 +44,7 @@ Triggered when someone @mentions bearbot asking to file a ticket.
   - If unassigned, keep default triage/backlog flow
 - Capture the issue identifier and URL
 
-## Step 5: Reply in Slack
+## Step 6: Reply in Slack
 - Reply in the same thread:
   ```
   Created [IDENTIFIER]: [Title]
@@ -46,7 +52,7 @@ Triggered when someone @mentions bearbot asking to file a ticket.
   [linear URL]
   ```
 
-## Step 6: Optional Slack↔Linear Link
+## Step 7: Optional Slack↔Linear Link
 - Only do this when explicitly asked by the user/reporter
 - Use the workspace Slack↔Linear integration to sync the Slack thread with
   the Linear issue so future updates flow between them
@@ -54,7 +60,7 @@ Triggered when someone @mentions bearbot asking to file a ticket.
 - If sync cannot be established from BearBot, say so clearly and ask the
   user to connect/link it manually in Linear/Slack
 
-## Step 7: Update Memory
+## Step 8: Update Memory
 - Read MEMORIES.md and append anything new you learned:
   user preferences, project context, assignment patterns, request nuances
 - Keep entries short and factual
