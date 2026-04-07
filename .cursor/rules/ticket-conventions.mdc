@@ -11,7 +11,7 @@ alwaysApply: true
 
 Example: "AT Tooling - [Project Odysseus] Modify Autoreviewer to check spelling"
 
-The 'Tool Type' basically refers to either 'RLS'/'HEX'/'Airtable' or 'Miscallaneous' if you can't decipher anything.
+The 'Tool Type' basically refers to either 'RLS'/'HEX'/'Airtable' or 'Miscellaneous' if you can't decipher anything.
 
 'Project Name' could be inferred from memory/slack conversation. 
 

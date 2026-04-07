@@ -14,6 +14,11 @@ Triggered when someone @mentions bearbot asking to file a ticket.
 - Get the Slack permalink
 - Capture the ENTIRE conversation — this is the most important part
 
+## Step 1b: Duplicate Check
+- Search Linear for existing open issues with similar title/description keywords
+- If a match is found, reply in thread with the existing issue link and ask: "This looks like it may already be tracked as [IDENTIFIER]. Should I file a new ticket anyway?"
+- Wait for confirmation before proceeding if a duplicate is found
+
 ## Step 2: Check Assignment
 - If the reporter mentions a specific engineer, note them
 - If NOT mentioned, reply in the thread asking:
@@ -29,13 +34,13 @@ Triggered when someone @mentions bearbot asking to file a ticket.
 - Don't block on missing fields — file the ticket with what you have
 
 ## Step 4: Create in Linear
-- Use Linear MCP to create the issue with:
-  - title, description, teamId, priority, assigneeId (if known)
-  - Default project: Bear & Plato AAIE Tooling
-  - Default team: Applied AI Engineering
+- Use the `save_issue` Linear MCP tool with:
+  - `title`, `description`, `team` ("Applied AI Engineering"), `priority`, `project` ("Bear & Plato AAIE Tooling")
+  - `assignee` (name or email, if known)
+  - `labels` — set based on Type Classification in bearbot-context.mdc (Bug / Feature / Improvement / Task)
 - Status rule:
-  - If assignee is set, set issue state to "Todo"
-  - If unassigned, keep default triage/backlog flow
+  - If assignee is set, set `state` to "Todo"
+  - If unassigned, omit state (default triage/backlog flow)
 - Capture the issue identifier and URL
 
 ## Step 5: Reply in Slack
