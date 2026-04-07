@@ -14,21 +14,37 @@ Triggered when someone @mentions bearbot asking to file a ticket.
 - Get the Slack permalink
 - Capture the ENTIRE conversation — this is the most important part
 
-## Step 2: Check Assignment
+## Step 2: Check for Duplicates
+- Before creating a new ticket, search Linear for existing issues that match:
+  - Similar keywords from the request
+  - Same reporter (if identifiable)
+  - Same project or tool type
+- If a potential duplicate is found:
+  - Reply in Slack: "This looks similar to [IDENTIFIER]: [Title]. Should I create a new ticket anyway, or would you like to add context to the existing one?"
+  - Wait for confirmation before proceeding
+- If no duplicates found, continue to Step 3
+
+## Step 3: Check Assignment
 - If the reporter mentions a specific engineer, note them
-- If NOT mentioned, reply in the thread asking:
-  "Who should this be assigned to? (Or should I leave it for triage?)"
+- If NOT mentioned, check MEMORIES.md for assignment patterns related to:
+  - The tool type or project mentioned
+  - Similar past requests
+  - The reporter's previous preferences
+- If a likely assignee can be inferred, suggest them: "Based on past tickets, this looks like something for [Name]. Should I assign to them?"
+- If no assignee can be inferred, ask: "Who should this be assigned to? (Or should I leave it for triage?)"
 - Wait for response before proceeding
 
-## Step 3: Draft the Ticket
+## Step 4: Draft the Ticket
 - Title: `[Tool Type] [Project Name] - Ask summary`
 - Fill description using the template in ticket-conventions.mdc
 - Include the full thread conversation inside "Ask Spec"
+- Include the Slack permalink for reference
 - Classify priority per the Priority Guide in ticket-conventions.mdc
-- Set assignee based on Step 2
+- Classify type per the Type Classification in bearbot-context.mdc
+- Set assignee based on Step 3
 - Don't block on missing fields — file the ticket with what you have
 
-## Step 4: Create in Linear
+## Step 5: Create in Linear
 - Use Linear MCP to create the issue with:
   - title, description, teamId, priority, assigneeId (if known)
   - Default project: Bear & Plato AAIE Tooling
@@ -38,15 +54,15 @@ Triggered when someone @mentions bearbot asking to file a ticket.
   - If unassigned, keep default triage/backlog flow
 - Capture the issue identifier and URL
 
-## Step 5: Reply in Slack
+## Step 6: Reply in Slack
 - Reply in the same thread:
   ```
   Created [IDENTIFIER]: [Title]
-  Priority: [level] · Assignee: [assignee or "Unassigned - pending triage"]
+  Priority: [level] · Type: [type] · Assignee: [assignee or "Unassigned - pending triage"]
   [linear URL]
   ```
 
-## Step 6: Optional Slack↔Linear Link
+## Step 7: Optional Slack↔Linear Link
 - Only do this when explicitly asked by the user/reporter
 - Use the workspace Slack↔Linear integration to sync the Slack thread with
   the Linear issue so future updates flow between them
@@ -54,8 +70,32 @@ Triggered when someone @mentions bearbot asking to file a ticket.
 - If sync cannot be established from BearBot, say so clearly and ask the
   user to connect/link it manually in Linear/Slack
 
-## Step 7: Update Memory
+## Step 8: Update Memory
 - Read MEMORIES.md and append anything new you learned:
   user preferences, project context, assignment patterns, request nuances
 - Keep entries short and factual
 - Don't repeat what's already there
+
+---
+
+## Error Handling
+
+### If Linear MCP is unavailable
+- Reply in Slack: "I'm having trouble connecting to Linear right now. Please try again in a few minutes, or create the ticket manually."
+- Include the drafted ticket content in your message so the reporter can copy it
+
+### If Slack thread cannot be read
+- Ask the reporter to share the relevant context directly in the thread
+- Proceed with whatever information is available
+
+### If duplicate check fails
+- Proceed with ticket creation but note in the description: "Unable to verify duplicates — please check manually"
+
+### If assignment lookup fails
+- Create the ticket unassigned and note: "Assignment lookup unavailable — needs manual triage"
+
+### If the request is unclear
+- Ask clarifying questions before creating the ticket:
+  - "Can you clarify what specific behavior you're seeing?"
+  - "What's the expected outcome?"
+  - "Is this blocking any current work?"
