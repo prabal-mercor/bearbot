@@ -1,0 +1,11 @@
+## Learned Patterns
+
+- If reporter asks "for me" or similar, treat as explicit self-assignment and assign to that reporter after confirming from thread context.
+- For Plato operational requests phrased as execution work (e.g., run batch jobs), default priority is Medium unless urgency/blocking language is explicit.
+- If a Slack ticket request closely matches an existing active Linear issue (same scope/deliverables), post the existing issue link in thread and ask whether a new ticket is still needed before creating one.
+- Prabal may explicitly request both assignee selection and subscriber tagging in the same ticket request; honor both when filing.
+- When a follow-up message scopes additional output format requirements for an existing (even canceled) ticket, create a new ticket rather than reopening the old one.
+- Prabal sometimes explicitly overrides assignee mid-thread (e.g., "assign to me, not to X") — always honor the explicit final instruction.
+- When asked to create a "fresh final ticket with all info", consolidate all prior tickets in the thread into a single new issue rather than editing existing ones.
+- "Link with this thread" means attach the Slack thread permalink as a link attachment on the Linear issue (use the `links` param in save_issue).
+- GitHub repo access requests (e.g., Mercor-io/studio) are categorized as Miscellaneous, filed as Medium priority unless urgency language is explicit, and routed to triage when no assignee is specified. Past similar tickets were resolved by Ryan Hu (AAIE-3601) and Ben Hunsberger (AAIE-1267).
